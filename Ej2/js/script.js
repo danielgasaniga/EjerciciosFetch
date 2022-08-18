@@ -16,3 +16,18 @@ function addImage(imgURL) {
 }
 
 // Escribe el código necesario para añadir el evento click al botón que permita agregar perros al div de id "container"
+
+btnAddImage.addEventListener( "click", () => {
+  addImage(datos.message);
+})
+
+let datos = "";
+async function obtenerDatos(url){
+  let response = await fetch (url);
+  if (response.ok){
+    datos = await response.json();
+  } else {
+    alert("HTTP error: " + response.status)
+  }
+}
+obtenerDatos(DATA_URL);
